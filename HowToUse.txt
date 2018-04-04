@@ -1,0 +1,21 @@
+Minecraft Perfect Circle Tool v1.0
+Open Source Project under GNUv3 license: https://github.com/mczaplinski/Minecraft-Perfect-Circle
+
+The provided files are tested and build under Windows. If you plan to use this tool on Linux or any other machine, clone the github repository and build it yourself :)
+
+Tutorial:
+
+1. Start MinecraftCircleTool.exe in the bin/ folder
+2. Type the diameter of your desired circle (integer, even or uneven)
+3. Type the roundness factor:
+	min: 0, max: 0.499, best: 0.275
+	It is hard to find the optimal decision for blocks on the outer edge of the circle.
+	For small diameters, this value can shape your circle slightly into the direction of a square or a star.
+	The optimal circle is something in between. Some may find smaller or higher values more desirable.
+	From experimentation we find 0.25 or 0.275 to be a good value.
+	We don't want to hardcode this decision but provide you the opportunity to shape YOUT circle into something you have always dreamed of.
+4. The output will be saved into a .txt file for later referencing.
+5. Have fun and spread the word!
+
+Troubleshooting:
+-> MSVCP120.dll or MSVCR120.dll missing: Install Visual C++ Redistributable Packages for Visual Studio 2013 under "redist/"
