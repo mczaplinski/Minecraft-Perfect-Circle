@@ -13,7 +13,7 @@ Tutorial:
 	For small diameters, this value can shape your circle slightly into the direction of a square or a star.
 	The optimal circle is something in between. Some may find smaller or higher values more desirable.
 	From experimentation we find 0.25 or 0.275 to be a good value.
-	We don't want to hardcode this decision but provide you the opportunity to shape YOUT circle into something you have always dreamed of.
+	We don't want to hardcode this decision but provide you the opportunity to shape YOUR circle into something you have always dreamed of.
 4. The output will be saved into a .txt file for later referencing.
 5. Have fun and spread the word!
 
