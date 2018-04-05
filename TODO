@@ -1,0 +1,10 @@
+short term todo:
+-add special case for diameter d=1 and d=2 (current algorithm can behave weird, see [2,0.25],[2,0.3])
+-limit roundnessfactor: (0 <= rf < 0.5) 
+-only accept numerical values
+
+long term todo:
+-extend radial boundary to arbitrary boundary/function (ellipse)
+-extend 2D ellipse to 3D ellipsoid
+-add user-friendly GUI and visualizaion
+-export as .schematic or add other support to implement into Minecraft
