@@ -108,6 +108,12 @@ bool CircleCalculator::Run(int d, float rf) {
 
   initCircle();
 
+#ifdef DEBUG_OUTPUT
+  std::cout << "m_fRadius=" << m_fRadius << std::endl;
+  std::cout << "m_iRadiusCeil=" << m_iRadiusCeil << std::endl;
+  std::cout << "m_bEven=" << (m_bEven ? "TRUE" : "FALSE") << std::endl;
+#endif
+
   bWidthEqualsRadius = calcCircle();
 
   if (!bWidthEqualsRadius) {
@@ -229,10 +235,9 @@ bool CircleCalculator::requestRoundnessFactor() {
   std::cout << std::endl;
   std::string sRoundnessFactor = (std::string)cRoundnessFactor;
 
-  if (sRoundnessFactor != "") {
-    m_fRoundnessFactor = std::stof(sRoundnessFactor);
-  } else {
-    m_fRoundnessFactor = m_fDefaultRoundnessFactor;
+  m_fRoundnessFactor = std::stof(sRoundnessFactor);
+  if (m_fRoundnessFactor < 0) {
+    return false;
   }
 
   return true;
@@ -286,6 +291,13 @@ bool CircleCalculator::calcCircle() {
     std::cout << std::endl;
 #endif
   }
+
+  // handle special cases
+  if (m_iDiameter == 2) {
+    m_pQuarterPoints[0][0] = 1;
+    widthEqualsRadius = true;
+  }
+
   return widthEqualsRadius;
 }
 
