@@ -28,7 +28,7 @@ bool CircleCalculator::Run() {
 
   CalcCircle();
 
-  OutputQuarter();
+  // OutputQuarter();
 
   OutputAndSaveComplete();
 }
