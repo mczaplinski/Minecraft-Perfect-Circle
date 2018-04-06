@@ -1,0 +1,11 @@
+CHANGELOG
+
+v1.1
+-added handling of circles that got generated too small
+-added easy mode without input of roundness factor
+-added info about diameter and the roundness factor
+-removed redist installer since they don't seem to be needed
+-(added debug output mode for developers in CMake)
+
+v1.0
+-added Minecraft Perfect Circle

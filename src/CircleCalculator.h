@@ -6,12 +6,17 @@ public:
   CircleCalculator();
   ~CircleCalculator();
 
-  bool Run();
+  bool Run(int d = -1, float rf = -1.0f);
 
-  bool requestValues();
-  bool CalcCircle();
-  void OutputQuarter();
-  void OutputAndSaveComplete();
+  bool mainMenu();
+
+  void printConsoleHeader();
+  bool requestDiameter();
+  bool requestRoundnessFactor();
+  void initCircle();
+  bool calcCircle();
+  void outputQuarter();
+  void outputAndSaveComplete();
 
 private:
   int m_iDiameter;
@@ -25,6 +30,9 @@ private:
 
   int **m_pQuarterPoints; // inner points of blocks inside the circle in first
                           // quadrant
+
+  const float m_fDefaultRoundnessFactor = 0.275f;
+  bool m_bEasyMode;
 };
 
 #endif // _CIRCLECALCULATOR_H

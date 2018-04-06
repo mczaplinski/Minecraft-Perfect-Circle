@@ -1,5 +1,6 @@
 short term todo:
--add special case for diameter d=1 and d=2 (current algorithm can behave weird, see [2,0.25],[2,0.3])
+-handle arguments from int main(..)
+-add special case for diameter d=1 and d=2  for easy mode
 -limit roundnessfactor: (0 <= rf < 0.5) 
 -only accept numerical values
 
