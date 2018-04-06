@@ -1,8 +1,9 @@
 short term todo:
--handle arguments from int main(..)
 -add special case for diameter d=1 and d=2  for easy mode
 -limit roundnessfactor: (0 <= rf < 0.5) 
 -only accept numerical values
+-handle arguments from int main(..)
+-add copyright and licence copypasta to header of all files
 
 long term todo:
 -extend radial boundary to arbitrary boundary/function (ellipse)
