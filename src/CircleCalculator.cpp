@@ -16,6 +16,11 @@ CircleCalculator::CircleCalculator() {
 CircleCalculator::~CircleCalculator() {}
 
 bool CircleCalculator::Run() {
+
+
+	bool widthEqualsRadius = false, progress = true;
+	char progressResponse[2] = "t";
+
   std::cout << "######################################" << std::endl;
 
   // read values
@@ -26,11 +31,41 @@ bool CircleCalculator::Run() {
   std::cout << "You chose d=" << m_iDiameter << " b=" << m_fRoundnessFactor
             << std::endl;
 
-  CalcCircle();
+  widthEqualsRadius = CalcCircle();
 
-  // OutputQuarter();
+  // OutputQuarter(points, diameter);
 
-  OutputAndSaveComplete();
+
+  if (!widthEqualsRadius) {
+	  std::cout << "The circle is smaller than the requested diameter. Likely the roundness was chosen to high. Nevertheless display the result? (y/N)" << std::endl;
+
+	  //temporary goto until
+  again:
+	  fflush(stdin);
+	  std::cin.sync();
+	  std::cin >> progressResponse;
+	  std::string sprogressResponse = (std::string)progressResponse;
+	  if (sprogressResponse == "Y" || sprogressResponse == "y") {
+		  progress = true;
+	  }
+	  else if (sprogressResponse == "N" || sprogressResponse == "n") {
+		  progress = false;
+	  }
+	  else {
+		  std::cout << "No suitable input. Please try again." << std::endl;
+		  std::cout << "The circle is smaller than the requested diameter. Likely the roundness was chosen to high. Nevertheless display the result? (y/N)" << std::endl;
+		  goto again;
+	  }
+
+
+  }
+
+  if (progress) {
+	  OutputAndSaveComplete();
+  }
+
+
+  progress = true;
 }
 
 bool CircleCalculator::requestValues() {
@@ -79,11 +114,13 @@ bool CircleCalculator::requestValues() {
 
   return true;
 }
-void CircleCalculator::CalcCircle() {
+bool CircleCalculator::CalcCircle() {
   // std::cout << std::endl << std::endl << "CALCULATION:" << std::endl;
-
+	bool widthEqualsRadius = false;
+	int width = 0;
   // calculation of quarter circle
   for (int i = m_iRadiusCeil - 1; i >= 0; i--) {
+	  width = 0;
     m_pQuarterPoints[i] = new int[m_iRadiusCeil];
     for (int j = 0; j < m_iRadiusCeil; j++) {
       float abs = sqrt((i - m_fOffset) * (i - m_fOffset) +
@@ -95,11 +132,16 @@ void CircleCalculator::CalcCircle() {
 
       if (abs < m_fRadius - m_fRoundnessFactor) {
         m_pQuarterPoints[i][j] = 1;
+		width++;
       } else {
         m_pQuarterPoints[i][j] = 0;
       }
     }
+	if (width == m_iRadiusCeil) {
+		widthEqualsRadius = true;
+	}
   }
+	return widthEqualsRadius;
 }
 void CircleCalculator::OutputQuarter() {
   std::cout << std::endl << std::endl << "OUTPUT QUARTER:" << std::endl;
@@ -110,6 +152,7 @@ void CircleCalculator::OutputQuarter() {
     }
     std::cout << std::endl;
   }
+  
 }
 void CircleCalculator::OutputAndSaveComplete() {
 

@@ -9,7 +9,7 @@ public:
   bool Run();
 
   bool requestValues();
-  void CalcCircle();
+  bool CalcCircle();
   void OutputQuarter();
   void OutputAndSaveComplete();
 
